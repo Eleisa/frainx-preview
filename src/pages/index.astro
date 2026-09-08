@@ -1,0 +1,90 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Manifesto from '~/components/widgets/Manifesto.astro';
+import InfrastructureMap from '~/components/widgets/InfrastructureMap.astro';
+import Capabilities from '~/components/widgets/Capabilities.astro';
+import StructuredData from '~/components/common/StructuredData.astro';
+import LearningByDoing from '~/components/widgets/LearningByDoing.astro';
+import LaboratoriesProjects from '~/components/widgets/LaboratoriesProjects.astro';
+
+import { SITE, I18N } from 'astrowind:config';
+import favIconSvg from '~/assets/favicons/favicon.svg';
+
+const metadata = {
+  title: 'FRAINX — Infraestructura tecnológica moderna',
+  description:
+    'Aprende y aplica Linux, Docker, Cloud, DevOps, Security y AI Infrastructure mediante contenido técnico, laboratorios y proyectos reales.',
+  ignoreTitleTemplate: true,
+};
+
+const organizationId = `${SITE?.site}/#organization`;
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${SITE?.site}/#website`,
+    name: SITE?.name,
+    url: SITE?.site,
+    inLanguage: I18N?.language,
+    publisher: { '@id': organizationId },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': organizationId,
+    name: SITE?.name,
+    url: SITE?.site,
+    logo: new URL(favIconSvg.src, SITE?.site).toString(),
+  },
+];
+---
+
+<Layout metadata={metadata}>
+  <StructuredData slot="head" schema={structuredData} />
+
+  <!-- =========================================================
+       HERO
+       ========================================================= -->
+
+  <Hero
+    tagline="Infraestructura tecnológica moderna"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Explorar FRAINX',
+        href: '#infraestructura',
+        icon: 'tabler:arrow-down',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      Construye, automatiza y escala
+      <span class="text-primary"> sistemas.</span>
+    </Fragment>
+
+    <Fragment slot="subtitle"> Infraestructura real. Conocimiento práctico. Sistemas que escalan. </Fragment>
+  </Hero>
+
+  <!-- =========================================================
+       MANIFIESTO
+       ========================================================= -->
+
+  <Manifesto />
+
+  <!-- =========================================================
+       MAPA DE INFRAESTRUCTURA
+       ========================================================= -->
+
+  <InfrastructureMap />
+
+  <!-- =========================================================
+       NUEVOS BLOQUES FRAINX
+       ========================================================= -->
+
+  <Capabilities />
+  <LearningByDoing />
+  <LaboratoriesProjects />
+</Layout>

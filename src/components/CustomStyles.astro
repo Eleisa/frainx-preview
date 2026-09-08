@@ -1,0 +1,81 @@
+---
+// FRAINX Design System v1.0
+// Global design tokens for typography, colors and surfaces.
+// Font family is provided by Astro's native Fonts API
+// (see fonts in astro.config.ts and <Font /> in Layout.astro).
+---
+
+<style is:inline>
+  :root {
+    /* ============================================================
+       FRAINX — TYPOGRAPHY
+       ============================================================ */
+
+    --aw-font-sans: var(--font-manrope);
+    --aw-font-serif: var(--font-manrope);
+    --aw-font-heading: var(--font-manrope);
+
+    /* ============================================================
+       FRAINX — BRAND COLORS
+       ============================================================ */
+
+    --aw-color-primary: rgb(37 99 235);
+    --aw-color-secondary: rgb(51 65 85);
+    --aw-color-accent: rgb(37 99 235);
+
+    /* ============================================================
+       FRAINX — TEXT
+       ============================================================ */
+
+    --aw-color-text-heading: rgb(17 24 39);
+    --aw-color-text-default: rgb(51 65 85);
+    --aw-color-text-muted: rgb(100 116 139);
+
+    /* ============================================================
+       FRAINX — SURFACES
+       ============================================================ */
+
+    --aw-color-bg-page: rgb(255 255 255);
+    --aw-color-bg-page-dark: rgb(17 24 39);
+
+    /* ============================================================
+       FRAINX — SELECTION
+       ============================================================ */
+
+    ::selection {
+      background-color: rgb(37 99 235 / 20%);
+      color: rgb(17 24 39);
+    }
+  }
+
+  /* ==============================================================
+     FRAINX — DARK MODE
+     ============================================================== */
+
+  .dark {
+    /* Typography */
+    --aw-font-sans: var(--font-manrope);
+    --aw-font-serif: var(--font-manrope);
+    --aw-font-heading: var(--font-manrope);
+
+    /* Brand */
+    --aw-color-primary: rgb(37 99 235);
+    --aw-color-secondary: rgb(51 65 85);
+    --aw-color-accent: rgb(37 99 235);
+
+    /* Text */
+    --aw-color-text-heading: rgb(248 250 252);
+    --aw-color-text-default: rgb(226 232 240);
+    --aw-color-text-muted: rgb(148 163 184);
+
+    /* Background */
+    --aw-color-bg-page: rgb(17 24 39);
+    --aw-color-bg-page-dark: rgb(17 24 39);
+
+    /* Selection */
+    ::selection {
+      background-color: rgb(37 99 235 / 40%);
+      color: rgb(255 255 255);
+    }
+  }
+</style>

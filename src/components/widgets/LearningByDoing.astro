@@ -1,0 +1,128 @@
+---
+type LearningItem = {
+  title: string;
+  description: string;
+};
+
+const learningItems: LearningItem[] = [
+  {
+    title: 'Laboratorios',
+    description: 'Entornos controlados para experimentar con tecnologías y arquitecturas.',
+  },
+  {
+    title: 'Proyectos',
+    description: 'Implementaciones que llevan los conceptos a escenarios reales.',
+  },
+  {
+    title: 'Experimentos',
+    description: 'Pruebas para entender qué funciona, por qué funciona y cómo mejorarlo.',
+  },
+];
+---
+
+<section
+  id="aprender-haciendo"
+  class="relative overflow-hidden bg-[#EFF6FF] py-8 sm:py-10 lg:py-14"
+  aria-labelledby="learning-title"
+>
+  <div
+    class="pointer-events-none absolute right-[-10%] top-[-20%] h-[500px] w-[500px] rounded-full bg-primary/[0.08] blur-3xl"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-8">
+    <div class="mb-4 flex items-center gap-4 sm:mb-5">
+      <span class="h-px w-10 bg-primary"></span>
+
+      <span class="text-base font-semibold uppercase tracking-[0.14em] text-primary sm:text-lg">
+        Aprender haciendo
+      </span>
+    </div>
+
+    <div class="grid items-center gap-8 lg:grid-cols-12 lg:gap-14">
+      <div class="lg:col-span-5">
+        <h2
+          id="learning-title"
+          class="max-w-xl text-4xl font-bold leading-[1.02] tracking-[-0.045em] text-heading sm:text-5xl lg:text-6xl"
+        >
+          De la teoría al
+          <br />
+          <span class="text-primary">sistema real.</span>
+        </h2>
+
+        <p class="mt-5 max-w-lg text-base leading-7 text-muted sm:text-lg sm:leading-8">
+          En FRAINX aprendemos construyendo. Cada concepto se convierte en un laboratorio, una configuración o un
+          proyecto que puede ejecutarse, analizarse y reproducirse.
+        </p>
+
+        <a
+          href="#proyectos"
+          class="mt-7 inline-flex items-center gap-3 rounded-sm border border-primary bg-primary px-6 py-3.5 text-base font-semibold text-white transition-colors duration-200 hover:border-secondary hover:bg-secondary"
+        >
+          Explorar laboratorios
+
+          <span class="h-px w-5 bg-white transition-all duration-300" aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div class="relative lg:col-span-7">
+        <div class="relative overflow-hidden bg-[#111827]">
+          <img
+            src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=85"
+            alt="Infraestructura de servidores utilizada como referencia visual para laboratorios técnicos"
+            loading="lazy"
+            decoding="async"
+            class="aspect-[16/10] h-full w-full object-cover opacity-90 transition-transform duration-700 hover:scale-[1.02]"
+          />
+
+          <div
+            class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[#111827]/70 via-[#111827]/10 to-transparent"
+            aria-hidden="true"
+          >
+          </div>
+
+          <div
+            class="absolute left-5 top-5 border border-white/20 bg-[#111827]/75 px-4 py-2 backdrop-blur-sm sm:left-7 sm:top-7"
+          >
+            <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-blue-300">
+              FRAINX / LAB
+            </span>
+          </div>
+
+          <div class="absolute bottom-5 left-5 right-5 sm:bottom-7 sm:left-7 sm:right-7">
+            <div>
+              <span class="text-[10px] font-semibold uppercase tracking-[0.18em] text-blue-300"> Práctica </span>
+
+              <p class="mt-2 text-xl font-semibold text-white sm:text-2xl">Construir para comprender.</p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="pointer-events-none absolute -bottom-3 -right-3 h-16 w-16 border-b border-r border-primary sm:-bottom-4 sm:-right-4 sm:h-20 sm:w-20"
+          aria-hidden="true"
+        >
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 grid border-t border-blue-200 sm:mt-14 md:grid-cols-3">
+      {
+        learningItems.map((item, index) => (
+          <article
+            class={`group border-b border-blue-200 py-6 sm:py-7 md:border-b-0 ${
+              index > 0 ? 'md:border-l md:border-blue-200 md:pl-8 lg:pl-10' : 'md:pr-8 lg:pr-10'
+            }`}
+          >
+            <h3 class="text-xl font-semibold tracking-[-0.02em] text-heading transition-colors duration-300 group-hover:text-primary sm:text-2xl">
+              {item.title}
+            </h3>
+
+            <p class="mt-2.5 text-sm leading-6 text-muted sm:text-base">{item.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

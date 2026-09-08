@@ -1,0 +1,131 @@
+---
+type Capability = {
+  number: string;
+  name: string;
+  description: string;
+};
+
+const capabilities: Capability[] = [
+  {
+    number: '01',
+    name: 'Linux',
+    description:
+      'Administración de sistemas, procesos, servicios y entornos donde comienza gran parte de la infraestructura moderna.',
+  },
+  {
+    number: '02',
+    name: 'Docker',
+    description: 'Contenedores, imágenes y entornos reproducibles para desarrollar, desplegar y operar aplicaciones.',
+  },
+  {
+    number: '03',
+    name: 'Redes',
+    description: 'Protocolos, comunicación y conectividad entre sistemas, servicios y componentes distribuidos.',
+  },
+  {
+    number: '04',
+    name: 'Cloud',
+    description: 'Infraestructura distribuida y servicios cloud para construir arquitecturas flexibles y escalables.',
+  },
+  {
+    number: '05',
+    name: 'DevOps',
+    description: 'Automatización, integración y entrega continua para construir sistemas reproducibles y operables.',
+  },
+  {
+    number: '06',
+    name: 'Seguridad',
+    description:
+      'Prácticas y controles para proteger sistemas, servicios, redes y datos durante todo su ciclo de vida.',
+  },
+  {
+    number: '07',
+    name: 'Observabilidad',
+    description:
+      'Métricas, logs y trazabilidad para comprender el comportamiento de los sistemas y detectar problemas.',
+  },
+  {
+    number: '08',
+    name: 'Infraestructura de IA',
+    description:
+      'Infraestructura para ejecutar, desplegar y operar cargas de inteligencia artificial y sistemas basados en LLM.',
+  },
+];
+---
+
+<section
+  id="capacidades"
+  class="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-28"
+  aria-labelledby="capabilities-title"
+>
+  <div class="mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <div class="mb-5 flex items-center justify-center gap-3">
+        <span class="h-px w-8 bg-primary"></span>
+
+        <span class="text-xs font-semibold uppercase tracking-[0.2em] text-primary"> Capacidades </span>
+
+        <span class="h-px w-8 bg-primary"></span>
+      </div>
+
+      <h2
+        id="capabilities-title"
+        class="text-4xl font-bold leading-[1.02] tracking-[-0.04em] text-heading sm:text-5xl lg:text-6xl"
+      >
+        Las tecnologías que hacen
+        <br class="hidden sm:block" />
+        posible construir sistemas modernos.
+      </h2>
+
+      <p class="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted sm:text-lg sm:leading-8">
+        Conocimiento práctico para comprender, construir y operar infraestructura tecnológica.
+      </p>
+    </div>
+
+    <div class="mt-12 grid border-t border-slate-200 sm:mt-16 md:grid-cols-2 md:divide-x md:divide-slate-200">
+      {
+        capabilities.map((capability, index) => (
+          <article
+            class={`group relative border-b border-slate-200 px-0 py-8 transition-colors duration-300 hover:bg-slate-50/60 sm:py-9 md:px-8 lg:px-10 ${
+              index % 2 === 0 ? 'md:pr-10 lg:pr-12' : 'md:pl-10 lg:pl-12'
+            }`}
+          >
+            <div class="flex gap-5 sm:gap-6">
+              <span
+                class="shrink-0 pt-1 font-mono text-sm font-semibold tracking-[0.08em] text-primary transition-transform duration-300 group-hover:translate-x-1"
+                aria-hidden="true"
+              >
+                {capability.number}
+              </span>
+
+              <div class="min-w-0">
+                <h3 class="text-2xl font-semibold leading-tight tracking-[-0.025em] text-heading transition-colors duration-300 group-hover:text-primary sm:text-3xl">
+                  {capability.name}
+                </h3>
+
+                <p class="mt-3 max-w-lg text-sm leading-6 text-muted sm:text-base sm:leading-7">
+                  {capability.description}
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="absolute bottom-0 left-0 h-px w-0 bg-primary transition-all duration-500 group-hover:w-full"
+              aria-hidden="true"
+            />
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="mt-8 flex items-center gap-5 sm:mt-10">
+      <div class="h-px flex-1 bg-slate-200"></div>
+
+      <p class="text-center text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+        De los fundamentos a la inteligencia
+      </p>
+
+      <div class="h-px flex-1 bg-slate-200"></div>
+    </div>
+  </div>
+</section>

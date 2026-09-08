@@ -1,0 +1,94 @@
+---
+import Button from '~/components/ui/Button.astro';
+import InfrastructureVisual from '~/components/widgets/InfrastructureVisual.astro';
+
+import type { Hero as Props } from '~/types';
+
+const {
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  tagline,
+  badge,
+
+  content = await Astro.slots.render('content'),
+  actions,
+
+  id,
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+
+const actionItems = Array.isArray(actions) ? actions : [];
+const actionContent = typeof actions === 'string' ? actions : '';
+---
+
+<section class="relative not-prose md:-mt-[76px]" {...id ? { id } : {}}>
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <slot name="bg">
+      {bg ? <Fragment set:html={bg} /> : null}
+    </slot>
+
+    <div class="absolute right-[-10%] top-[5%] h-[500px] w-[500px] rounded-full bg-primary/[0.035] blur-3xl"></div>
+
+    <div class="absolute bottom-[-20%] left-[-15%] h-[400px] w-[400px] rounded-full bg-blue-100/30 blur-3xl"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="pointer-events-none pt-0 md:pt-[76px]"></div>
+
+    <div
+      class="grid items-center gap-8 py-10 sm:gap-10 sm:py-12 md:grid-cols-12 md:gap-8 md:py-14 lg:gap-12 lg:py-16 xl:py-20"
+    >
+      <div class="relative z-10 md:col-span-6 lg:col-span-6">
+        <div class="max-w-2xl">
+          {badge && <div class="mb-4">{badge}</div>}
+
+          {
+            tagline && (
+              <div class="mb-4 flex items-center gap-3">
+                <span class="h-px w-8 bg-primary" />
+
+                <span class="text-xs font-semibold uppercase tracking-[0.18em] text-primary sm:text-sm">{tagline}</span>
+              </div>
+            )
+          }
+
+          {
+            title && (
+              <h1 class="max-w-2xl text-5xl font-bold leading-[0.98] tracking-[-0.045em] text-heading sm:text-6xl md:text-6xl lg:text-7xl xl:text-[5.25rem]">
+                <Fragment set:html={title} />
+              </h1>
+            )
+          }
+
+          <div class="mt-6 max-w-xl">
+            {
+              subtitle && (
+                <div class="text-base leading-7 text-muted sm:text-lg sm:leading-8">
+                  <Fragment set:html={subtitle} />
+                </div>
+              )
+            }
+
+            {
+              actionItems.length > 0 && (
+                <div class="mt-7 flex flex-wrap gap-3">
+                  {actionItems.map((action) => (
+                    <Button {...action} />
+                  ))}
+                </div>
+              )
+            }
+
+            {actionContent && <Fragment set:html={actionContent} />}
+          </div>
+
+          {content && <Fragment set:html={content} />}
+        </div>
+      </div>
+
+      <div class="relative md:col-span-6 lg:col-span-6">
+        <InfrastructureVisual />
+      </div>
+    </div>
+  </div>
+</section>

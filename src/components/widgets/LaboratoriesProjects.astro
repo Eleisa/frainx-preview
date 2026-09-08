@@ -1,0 +1,238 @@
+---
+import { Icon } from 'astro-icon/components';
+
+type Project = {
+  title: string;
+  category: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  technologies: string[];
+  featured?: boolean;
+};
+
+const projects: Project[] = [
+  {
+    title: 'Docker + Linux',
+    category: 'Laboratorio',
+    description: 'Construye un entorno reproducible con contenedores, redes y servicios sobre Linux.',
+    image: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?auto=format&fit=crop&w=1400&q=85',
+    imageAlt: 'Terminal Linux utilizada como referencia visual para un laboratorio de infraestructura',
+    technologies: ['Linux', 'Docker', 'Redes'],
+    featured: true,
+  },
+  {
+    title: 'Automatización de infraestructura',
+    category: 'Proyecto',
+    description: 'Diseña un flujo reproducible para desplegar, configurar y operar servicios de forma automatizada.',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=85',
+    imageAlt: 'Circuitos y hardware como referencia visual para automatización tecnológica',
+    technologies: ['DevOps', 'Cloud', 'Automation'],
+  },
+  {
+    title: 'Infraestructura para IA',
+    category: 'Experimento',
+    description:
+      'Explora cómo preparar infraestructura para ejecutar y operar aplicaciones basadas en inteligencia artificial.',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=85',
+    imageAlt: 'Visualización abstracta de inteligencia artificial',
+    technologies: ['AI Infrastructure', 'LLMOps', 'Observabilidad'],
+  },
+];
+---
+
+<section
+  id="proyectos"
+  class="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-28"
+  aria-labelledby="projects-title"
+>
+  <div class="mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-8">
+    <!-- Encabezado -->
+
+    <div class="grid items-end gap-8 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-7">
+        <div class="mb-5 flex items-center gap-3">
+          <span class="h-px w-10 bg-primary"></span>
+
+          <span class="text-xs font-semibold uppercase tracking-[0.2em] text-primary sm:text-sm"> Proyectos </span>
+        </div>
+
+        <h2
+          id="projects-title"
+          class="max-w-3xl text-4xl font-bold leading-[1.02] tracking-[-0.045em] text-heading sm:text-5xl lg:text-6xl"
+        >
+          Construimos sistemas,
+          <br class="hidden sm:block" />
+          no solo tutoriales.
+        </h2>
+      </div>
+
+      <div class="lg:col-span-5 lg:pb-1">
+        <p class="max-w-xl text-base leading-7 text-muted sm:text-lg sm:leading-8">
+          Laboratorios y proyectos reproducibles para experimentar con infraestructura real, entender cómo funciona y
+          llevarla más lejos.
+        </p>
+      </div>
+    </div>
+
+    <!-- Proyecto destacado -->
+
+    <div class="mt-12 sm:mt-16 lg:mt-20">
+      {
+        projects
+          .filter((project) => project.featured)
+          .map((project) => (
+            <article class="group grid overflow-hidden border border-slate-200 bg-slate-50 lg:grid-cols-12">
+              <div class="relative min-h-[280px] overflow-hidden lg:col-span-7 lg:min-h-[480px]">
+                <img
+                  src={project.image}
+                  alt={project.imageAlt}
+                  loading="lazy"
+                  decoding="async"
+                  class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.025]"
+                />
+
+                <div
+                  class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[#111827]/70 via-[#111827]/10 to-transparent"
+                  aria-hidden="true"
+                />
+
+                <div class="absolute left-5 top-5 border border-white/20 bg-[#111827]/75 px-4 py-2 backdrop-blur-sm sm:left-7 sm:top-7">
+                  <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-blue-300">
+                    FRAINX / LAB
+                  </span>
+                </div>
+
+                <div class="absolute bottom-5 left-5 sm:bottom-7 sm:left-7">
+                  <span class="text-[10px] font-semibold uppercase tracking-[0.18em] text-blue-300">
+                    {project.category}
+                  </span>
+                </div>
+              </div>
+
+              <div class="flex flex-col justify-between p-6 sm:p-8 lg:col-span-5 lg:p-10 xl:p-12">
+                <div>
+                  <div class="flex items-center gap-3">
+                    <span class="h-px w-8 bg-primary" />
+
+                    <span class="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+                      Proyecto destacado
+                    </span>
+                  </div>
+
+                  <h3 class="mt-6 text-3xl font-semibold leading-tight tracking-[-0.035em] text-heading sm:text-4xl">
+                    {project.title}
+                  </h3>
+
+                  <p class="mt-5 text-base leading-7 text-muted sm:text-lg sm:leading-8">{project.description}</p>
+                </div>
+
+                <div class="mt-10">
+                  <div class="flex flex-wrap gap-2">
+                    {project.technologies.map((technology) => (
+                      <span class="border border-slate-200 bg-white px-3 py-1.5 font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-slate-500">
+                        {technology}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div class="mt-8 flex items-center justify-between border-t border-slate-200 pt-5">
+                    <span class="text-xs font-medium uppercase tracking-[0.14em] text-slate-400">
+                      Laboratorio reproducible
+                    </span>
+
+                    <span
+                      class="flex h-10 w-10 items-center justify-center rounded-sm border border-slate-200 text-slate-500 transition-all duration-300 group-hover:border-primary group-hover:bg-primary group-hover:text-white"
+                      aria-hidden="true"
+                    >
+                      <Icon name="tabler:arrow-up-right" class="text-lg" />
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))
+      }
+    </div>
+
+    <!-- Proyectos secundarios -->
+
+    <div class="mt-6 grid gap-6 md:grid-cols-2">
+      {
+        projects
+          .filter((project) => !project.featured)
+          .map((project) => (
+            <article class="group overflow-hidden border border-slate-200 bg-white transition-colors duration-300 hover:border-slate-300">
+              <div class="relative aspect-[16/9] overflow-hidden bg-slate-100">
+                <img
+                  src={project.image}
+                  alt={project.imageAlt}
+                  loading="lazy"
+                  decoding="async"
+                  class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.025]"
+                />
+
+                <div
+                  class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#111827]/60 via-transparent to-transparent"
+                  aria-hidden="true"
+                />
+
+                <div class="absolute bottom-4 left-5">
+                  <span class="text-[10px] font-semibold uppercase tracking-[0.18em] text-blue-300">
+                    {project.category}
+                  </span>
+                </div>
+              </div>
+
+              <div class="p-6 sm:p-7 lg:p-8">
+                <div class="flex items-start justify-between gap-6">
+                  <div>
+                    <h3 class="text-2xl font-semibold tracking-[-0.025em] text-heading sm:text-3xl">{project.title}</h3>
+
+                    <p class="mt-3 max-w-xl text-sm leading-6 text-muted sm:text-base sm:leading-7">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  <span
+                    class="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-sm border border-slate-200 text-slate-400 transition-all duration-300 group-hover:border-primary group-hover:bg-primary group-hover:text-white"
+                    aria-hidden="true"
+                  >
+                    <Icon name="tabler:arrow-up-right" class="text-base" />
+                  </span>
+                </div>
+
+                <div class="mt-6 flex flex-wrap gap-2">
+                  {project.technologies.map((technology) => (
+                    <span class="border border-slate-200 px-2.5 py-1 font-mono text-[9px] font-medium uppercase tracking-[0.12em] text-slate-500">
+                      {technology}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))
+      }
+    </div>
+
+    <!-- Cierre -->
+
+    <div
+      class="mt-10 flex flex-col gap-5 border-t border-slate-200 pt-8 sm:mt-14 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p class="max-w-xl text-sm leading-6 text-muted sm:text-base">
+        Cada proyecto parte de un problema, se construye paso a paso y termina en un sistema que puede ser probado,
+        analizado y reproducido.
+      </p>
+
+      <a
+        href="#recursos"
+        class="group inline-flex shrink-0 items-center gap-3 text-sm font-semibold text-heading transition-colors duration-200 hover:text-primary"
+      >
+        Ver recursos
+
+        <span class="h-px w-6 bg-primary transition-all duration-300 group-hover:w-10" aria-hidden="true"></span>
+      </a>
+    </div>
+  </div>
+</section>
