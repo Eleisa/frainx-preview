@@ -17,13 +17,19 @@ import astrowind from './vendor/integration';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin } from './src/utils/frontmatter';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const __dirname = path.dirname(fileURLToPath(import.meta.url)); 
+const isGitHubPages = process.env.GITHUB_ACTIONS === 'true';
+
+const githubPagesSite = 'https://eleisa.github.io';
+const githubPagesBase = '/frainx-preview';
 
 const hasExternalScripts = false;
 const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroIntegration)[] = []) =>
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
+  site: isGitHubPages ? githubPagesSite : 'https://frainx.com',
+  base: isGitHubPages ? githubPagesBase : '/',
   output: 'static',
 
   // Prefetch links as they enter the viewport for snappier navigations
