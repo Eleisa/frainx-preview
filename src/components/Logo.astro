@@ -1,5 +1,6 @@
 ---
-const logoPath = `${import.meta.env.BASE_URL}images/logo/frainx-logo.svg`;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const logoPath = `${base}/images/logo/frainx-logo.svg`;
 ---
 
 <img
