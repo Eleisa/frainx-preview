@@ -1,0 +1,72 @@
+site:
+  name: FRAINX
+  site: 'https://eleisa.github.io'
+  base: '/frainx-preview'
+  trailingSlash: false
+
+  googleSiteVerificationId: null
+
+# Default SEO metadata
+metadata:
+  title:
+    default: FRAINX
+    template: '%s — FRAINX'
+  description: 'Infraestructura tecnológica moderna para aplicaciones, empresas y sistemas de IA. Aprende Linux, Docker, Cloud, DevOps, Security y AI Infrastructure.'
+  robots:
+    index: false
+    follow: true
+  openGraph:
+    site_name: FRAINX
+    images:
+      - url: '~/assets/images/default.png'
+        width: 1200
+        height: 628
+    type: website
+  twitter:
+    handle: null
+    site: null
+    cardType: summary_large_image
+
+i18n:
+  language: es
+  textDirection: ltr
+
+apps:
+  blog:
+    isEnabled: true
+    postsPerPage: 8
+
+    post:
+      isEnabled: true
+      permalink: '/%slug%'
+      robots:
+        index: false
+
+    list:
+      isEnabled: true
+      pathname: 'blog'
+      robots:
+        index: false
+
+    category:
+      isEnabled: true
+      pathname: 'category'
+      robots:
+        index: false
+
+    tag:
+      isEnabled: true
+      pathname: 'tag'
+      robots:
+        index: false
+
+    isRelatedPostsEnabled: true
+    relatedPostsCount: 4
+
+analytics:
+  vendors:
+    googleAnalytics:
+      id: null
+
+ui:
+  theme: 'system'

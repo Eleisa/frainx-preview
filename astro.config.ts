@@ -102,8 +102,8 @@ export default defineConfig({
     }),
 
     astrowind({
-      config: './src/config.yaml',
-    }),
+config: isGitHubPages ? './src/config.preview.yaml' : './src/config.yaml',
+}),
   ],
 
   image: {
