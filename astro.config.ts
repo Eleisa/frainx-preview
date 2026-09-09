@@ -17,7 +17,7 @@ import astrowind from './vendor/integration';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin } from './src/utils/frontmatter';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url)); 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isGitHubPages = process.env.GITHUB_ACTIONS === 'true';
 
 const githubPagesSite = 'https://eleisa.github.io';
